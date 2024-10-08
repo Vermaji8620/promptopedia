@@ -1,3 +1,4 @@
+import Nav from "@components/Nav";
 import "@styles/globals.css";
 
 export const metadata = {
@@ -5,7 +6,7 @@ export const metadata = {
   description: "Discover the best prompts for your next writing session",
 };
 
-const RootLayout = ({children}) => {
+const RootLayout = ({ children }) => {
   return (
     <html lang="en">
       <body>
@@ -13,7 +14,10 @@ const RootLayout = ({children}) => {
           <div className="gradient" />
         </div>
 
-        <div className="app">{children}</div>
+        <div className="app">
+          <Nav />
+          {children}
+        </div>
       </body>
     </html>
   );
