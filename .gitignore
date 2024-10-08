@@ -11,11 +11,10 @@
 
 # next.js
 /.next/
+/cache
 /out/
 # environment variables
 .env
-.env.test
-.env.production
 
 # production
 /build
