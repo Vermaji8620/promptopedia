@@ -41,9 +41,14 @@ const Nav = () => {
             <button type="button" className="outline_btn" onClick={signOut}>
               SignOut
             </button>
-
             <Link href="/profile">
-              <Image src={Logo} width={37} height={37} />
+              <Image
+                className="rounded-full"
+                src={session?.user?.image}
+                width={37}
+                height={37}
+                alt="User Profile"
+              />
             </Link>
           </div>
         ) : (
@@ -70,8 +75,8 @@ const Nav = () => {
               width={40}
               height={50}
               alt="fsd"
-              className="object-contain"
-              src={Logo}
+              className="object-contain rounded-full"
+              src={session?.user?.image}
               onClick={() => {
                 setToggleDropDown((prev) => !prev);
               }}
@@ -107,15 +112,17 @@ const Nav = () => {
             )}
           </div>
         ) : (
-          <div className="flex">
-            <Image
-              width={40}
-              height={50}
-              alt="fsd"
-              className="object-contain"
-              src={Logo}
-              onClick={() => {}}
-            />
+          <div>
+            {providers &&
+              Object.values(providers).map((provider) => (
+                <button
+                  type="button"
+                  key={provider.name}
+                  onClick={() => signIn(provider.id)}
+                >
+                  SignIn
+                </button>
+              ))}
           </div>
         )}
       </div>
