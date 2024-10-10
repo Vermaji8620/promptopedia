@@ -1,4 +1,4 @@
-# State_Land
+# PROMPTOPEDIA
 
 ## Technologies Used
 - **HTML**
