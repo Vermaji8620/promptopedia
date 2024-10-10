@@ -10,8 +10,13 @@ const PromptCard = ({
   post,
   handleTagClick,
   handleTagEdit,
+  handleEdit,
   handleTagDelete,
+  handleDelete,
 }) => {
+  const { data: session } = useSession();
+  const pathname = usePathname();
+  const router = useRouter();
   const [copied, setCopied] = useState("");
   const handleCopy = () => {
     setCopied(post.prompt);
@@ -56,8 +61,25 @@ const PromptCard = ({
           handleTagClick && handleTagClick(post.tag);
         }}
       >
-        {post.tag}{" "}
+        #{post.tag}
       </p>
+
+      {session?.user?.id === post.creator._id && pathname === "/profile" && (
+        <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
+          <p
+            className="font-inter text-sm cursor-pointer green_gradient"
+            onClick={handleEdit}
+          >
+            Edit
+          </p>
+          <p
+            className="font-inter text-sm cursor-pointer orange_gradient"
+            onClick={handleDelete}
+          >
+            Delete
+          </p>
+        </div>
+      )}
     </div>
   );
 };
